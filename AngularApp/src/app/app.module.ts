@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { SharedModule } from './shared/shared.module';
+import { AuthenticationComponent } from './authentication/authentication.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppSettings } from './app.settings';
 import { UserService } from './shared/services/user.service';
@@ -16,6 +17,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
 import { CustomLoaderService } from './shared/services/customLoader.service';
+import { DashboardModule } from './dashboard/dashboard.module';
 import { BrandService } from './shared/services/brand.service';
 import { ModelService } from './shared/services/model.service';
 import { BodyStyleService } from './shared/services/bodyStyle.service';
@@ -27,6 +29,7 @@ import { AdvertComponent } from './advert/advert.component';
 @NgModule({
   declarations: [
     AppComponent,
+    AuthenticationComponent,
     HomeComponent,
     AdvertComponent,
   ],
@@ -35,6 +38,7 @@ import { AdvertComponent } from './advert/advert.component';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    DashboardModule,
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
