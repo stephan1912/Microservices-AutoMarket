@@ -9,8 +9,8 @@ namespace SpecificationsAPI.Repository
     {
         Task<bool> CreateCountry(CountryDTO CountryDTO);
         Task<bool> UpdateCountry(CountryDTO CountryDTO);
-        Task<bool> DeleteCountry(int id);
-        Task<Country> GetById(int id);
+        Task<bool> DeleteCountry(string id);
+        Task<Country> GetById(string id);
         Task<IQueryable<Country>> GetAllAsync();
     }
 }

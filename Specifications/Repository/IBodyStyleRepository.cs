@@ -10,8 +10,8 @@ namespace SpecificationsAPI.Repository
     {
         Task<bool> CreateBodyStyle(BodyStyleDTO bodyStyleDTO);
         Task<bool> UpdateBodyStyle(BodyStyleDTO bodyStyleDTO);
-        Task<bool> DeleteBodyStyle(int id);
-        Task<BodyStyle> GetById(int id);
+        Task<bool> DeleteBodyStyle(string id);
+        Task<BodyStyle> GetById(string id);
         Task<IQueryable<BodyStyle>> GetAllAsync();
     }
 }

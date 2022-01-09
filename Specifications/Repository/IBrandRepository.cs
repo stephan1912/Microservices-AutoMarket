@@ -9,8 +9,8 @@ namespace SpecificationsAPI.Repository
     {
         Task<bool> CreateBrand(BrandDTO BrandDTO);
         Task<bool> UpdateBrand(BrandDTO BrandDTO);
-        Task<bool> DeleteBrand(int id);
-        Task<Brand> GetById(int id);
+        Task<bool> DeleteBrand(string id);
+        Task<Brand> GetById(string id);
         Task<IQueryable<Brand>> GetAllAsync();
         //toDo
         //Task<bool> CreateBrandModel(ModelDTO BrandDTO);

@@ -27,13 +27,13 @@ namespace SpecificationsAPI.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(int id)
+        public async Task<IActionResult> GetById(string id)
         {
             return Ok(await BodyStyleRepository.GetById(id));
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteBodyStyle(int id)
+        public IActionResult DeleteBodyStyle(string id)
         {
             if (BodyStyleRepository.DeleteBodyStyle(id) != null)
             {

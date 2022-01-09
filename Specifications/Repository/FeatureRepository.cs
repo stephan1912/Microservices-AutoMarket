@@ -44,7 +44,7 @@ namespace SpecificationsAPI.Repository
             }
         }
 
-        public Task<bool> DeleteFeature(int id)
+        public Task<bool> DeleteFeature(string id)
         {
             try
             {
@@ -59,7 +59,7 @@ namespace SpecificationsAPI.Repository
             }
         }
 
-        public async Task<Feature> GetById(int id)
+        public async Task<Feature> GetById(string id)
         {
             return await Task.FromResult(DbContext.Features.Where(a => a.Id == id).FirstOrDefault());
         }

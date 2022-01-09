@@ -47,7 +47,7 @@ namespace SpecificationsAPI.Repository
             }
         }
 
-        public Task<bool> DeleteModel(int id)
+        public Task<bool> DeleteModel(string id)
         {
             try
             {
@@ -62,7 +62,7 @@ namespace SpecificationsAPI.Repository
             }
         }
 
-        public async Task<Model> GetById(int id)
+        public async Task<Model> GetById(string id)
         {
             return await Task.FromResult(DbContext.Models.Where(a => a.Id == id).FirstOrDefault());
         }

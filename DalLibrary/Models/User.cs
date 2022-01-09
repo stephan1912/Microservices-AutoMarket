@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Identity;
 
-#nullable disable
+
 
 namespace DalLibrary.Models
 {
-    public partial class User
+    public partial class User: IdentityUser
     {
-        public int Id { get; set; }
         public bool Active { get; set; }
         public DateTime? Birthdate { get; set; }
         public string Email { get; set; }
@@ -15,6 +15,5 @@ namespace DalLibrary.Models
         public string LastName { get; set; }
         public string Password { get; set; }
         public string Roles { get; set; }
-        public string Username { get; set; }
     }
 }

@@ -27,13 +27,13 @@ namespace SpecificationsAPI.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(int id)
+        public async Task<IActionResult> GetById(string id)
         {
             return Ok(await BrandRepository.GetById(id));
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteBrand(int id)
+        public IActionResult DeleteBrand(string id)
         {
             if (BrandRepository.DeleteBrand(id) != null)
             {

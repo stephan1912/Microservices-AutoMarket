@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 
-#nullable disable
+
 
 namespace DalLibrary.Models
 {
     public partial class Advert
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
         public DateTime? CreatedAt { get; set; }
         public string Description { get; set; }
         public string Drivetrain { get; set; }
@@ -22,9 +22,9 @@ namespace DalLibrary.Models
         public string Title { get; set; }
         public string Vin { get; set; }
         public int Year { get; set; }
-        public int? BodyStyleId { get; set; }
-        public int? CountryId { get; set; }
-        public int? ModelId { get; set; }
-        public int? UserId { get; set; }
+        public string BodyStyleId { get; set; }
+        public string CountryId { get; set; }
+        public string ModelId { get; set; }
+        public string UserId { get; set; }
     }
 }
