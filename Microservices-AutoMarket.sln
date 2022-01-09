@@ -1,11 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29509.3
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DalLibrary", "DalLibrary\DalLibrary.csproj", "{F73BC2A8-4D59-4F04-BA18-E5EECFD24B15}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DalLibrary", "DalLibrary\DalLibrary.csproj", "{F73BC2A8-4D59-4F04-BA18-E5EECFD24B15}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityService", "IdentityService\IdentityService.csproj", "{5C667220-B995-4ADF-BF2A-420E79BE76AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityService", "IdentityService\IdentityService.csproj", "{5C667220-B995-4ADF-BF2A-420E79BE76AF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdvertAPI", "AdvertAPI\AdvertAPI.csproj", "{990AD462-37B5-45DE-A9CE-82F35EFC0FFC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpecificationsAPI", "Specifications\SpecificationsAPI.csproj", "{4E35577F-73FB-41FC-8724-ADACF757B970}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{5C667220-B995-4ADF-BF2A-420E79BE76AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C667220-B995-4ADF-BF2A-420E79BE76AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C667220-B995-4ADF-BF2A-420E79BE76AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{990AD462-37B5-45DE-A9CE-82F35EFC0FFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{990AD462-37B5-45DE-A9CE-82F35EFC0FFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{990AD462-37B5-45DE-A9CE-82F35EFC0FFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{990AD462-37B5-45DE-A9CE-82F35EFC0FFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E35577F-73FB-41FC-8724-ADACF757B970}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E35577F-73FB-41FC-8724-ADACF757B970}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E35577F-73FB-41FC-8724-ADACF757B970}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E35577F-73FB-41FC-8724-ADACF757B970}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
-#nullable disable
-
-namespace DalLibrary.Models
+namespace DalLibrary.DTO
 {
-    public partial class BodyStyle
+    public class BodyStyleDTO
     {
-        public int Id { get; set; }
+        public int bs_Id { get; set; }
         public string Description { get; set; }
         public string Name { get; set; }
     }
