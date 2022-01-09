@@ -9,8 +9,8 @@ namespace SpecificationsAPI.Repository
     {
         Task<bool> CreateModel(ModelDTO ModelDTO);
         Task<bool> UpdateModel(ModelDTO ModelDTO);
-        Task<bool> DeleteModel(int id);
-        Task<Model> GetById(int id);
+        Task<bool> DeleteModel(string id);
+        Task<Model> GetById(string id);
         Task<IQueryable<Model>> GetAllAsync();
     }
 }

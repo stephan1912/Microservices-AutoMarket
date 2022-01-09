@@ -1,12 +1,11 @@
 ﻿using System;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-#nullable disable
-
 namespace DalLibrary.Models
 {
-    public partial class AutoMarketContext : DbContext
+    public partial class AutoMarketContext : IdentityDbContext<User>
     {
         public AutoMarketContext()
         {
@@ -32,8 +31,9 @@ namespace DalLibrary.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseMySQL("server=automarket-db.c85nbo1h0jkt.us-east-1.rds.amazonaws.com;uid=admin;pwd=automarket;database=AutoMarket");
+                optionsBuilder.UseMySql(
+                "server=automarket-db.c85nbo1h0jkt.us-east-1.rds.amazonaws.com;uid=admin;pwd=automarket;database=AutoMarket",
+                new MySqlServerVersion(new Version(8, 0, 27)));
             }
         }
 
@@ -268,22 +268,19 @@ namespace DalLibrary.Models
                     .HasMaxLength(20)
                     .HasColumnName("last_name");
 
-                entity.Property(e => e.Password)
-                    .IsRequired()
-                    .HasMaxLength(13)
-                    .HasColumnName("password");
 
                 entity.Property(e => e.Roles)
                     .HasMaxLength(255)
                     .HasColumnName("roles");
 
-                entity.Property(e => e.Username)
+                entity.Property(e => e.UserName)
                     .IsRequired()
                     .HasMaxLength(20)
                     .HasColumnName("username");
             });
 
             OnModelCreatingPartial(modelBuilder);
+            base.OnModelCreating(modelBuilder);
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);

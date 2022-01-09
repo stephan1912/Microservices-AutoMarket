@@ -27,13 +27,13 @@ namespace SpecificationsAPI.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(int id)
+        public async Task<IActionResult> GetById(string id)
         {
             return Ok(await FeatureRepository.GetById(id));
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteFeature(int id)
+        public IActionResult DeleteFeature(string id)
         {
             if (FeatureRepository.DeleteFeature(id) != null)
             {

@@ -28,7 +28,7 @@ namespace SpecificationsAPI.Repository
             }
         }
 
-        public Task<bool> DeleteBrand(int id)
+        public Task<bool> DeleteBrand(string id)
         {
             try
             {
@@ -48,7 +48,7 @@ namespace SpecificationsAPI.Repository
             return await Task.FromResult(DbContext.Brands.AsQueryable());
         }
 
-        public async Task<Brand> GetById(int id)
+        public async Task<Brand> GetById(string id)
         {
             return await Task.FromResult(DbContext.Brands.Where(a => a.Id == id).FirstOrDefault());
         }

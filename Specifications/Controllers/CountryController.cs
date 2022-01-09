@@ -27,13 +27,13 @@ namespace SpecificationsAPI.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(int id)
+        public async Task<IActionResult> GetById(string id)
         {
             return Ok(await CountryRepository.GetById(id));
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteCountry(int id)
+        public IActionResult DeleteCountry(string id)
         {
             if (CountryRepository.DeleteCountry(id) != null)
             {

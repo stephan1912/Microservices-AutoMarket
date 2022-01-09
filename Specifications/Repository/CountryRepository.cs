@@ -29,7 +29,7 @@ namespace SpecificationsAPI.Repository
             }
         }
 
-        public Task<bool> DeleteCountry(int id)
+        public Task<bool> DeleteCountry(string id)
         {
             try
             {
@@ -49,7 +49,7 @@ namespace SpecificationsAPI.Repository
             return await Task.FromResult(DbContext.Countries.AsQueryable());
         }
 
-        public async Task<Country> GetById(int id)
+        public async Task<Country> GetById(string id)
         {
             return await Task.FromResult(DbContext.Countries.Where(a => a.Id == id).FirstOrDefault());
         }

@@ -43,12 +43,12 @@ namespace AdvertAPI.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
         [HttpGet("/all/{userId}")]
-        public async Task<IActionResult> GetAll(int userId)
+        public async Task<IActionResult> GetAll(string userId)
         {
             return Ok(await AdvertRepository.GetAllAsync(userId));
         }
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(int id)
+        public async Task<IActionResult> GetById(string id)
         {
             return Ok(await AdvertRepository.GetByIdAsync(id));
         }
@@ -66,7 +66,7 @@ namespace AdvertAPI.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteAdvert(int id)
+        public IActionResult DeleteAdvert(string id)
         {
             if (AdvertRepository.DeleteAdvertAsync(id)!=null)
             {

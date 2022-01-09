@@ -7,10 +7,10 @@ namespace DalLibrary.DTO
 {
     public class AdvertDTO
     {
-        public int advert_id;
+        public string advert_id;
         public CountryDTO countryDTO;
         public BodyStyleDTO bodyStyleDTO;
-        public int user_id;
+        public string user_id;
         public List<FeatureDTO> features;
 
         public String title;

@@ -9,8 +9,8 @@ namespace SpecificationsAPI.Repository
     {
         Task<bool> CreateFeature(FeatureDTO FeatureDTO);
         Task<bool> UpdateFeature(FeatureDTO FeatureDTO);
-        Task<bool> DeleteFeature(int id);
-        Task<Feature> GetById(int id);
+        Task<bool> DeleteFeature(string id);
+        Task<Feature> GetById(string id);
         Task<IQueryable<Feature>> GetAllAsync();
     }
 }

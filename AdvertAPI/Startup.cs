@@ -27,7 +27,7 @@ namespace AdvertAPI
         {
             services.AddAutoMapper(typeof(Startup));
             services.AddControllers();
-            DalLibraryStartup.InitializeDalLibrary(services, Configuration);
+            DalLibraryStartup.ConfigureServices(services, Configuration);
             services.AddScoped<IAdvertRepository, AdvertRepository>();
         }
 

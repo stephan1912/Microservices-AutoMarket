@@ -27,7 +27,7 @@ namespace IdentityService
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            DalLibraryStartup.InitializeDalLibrary(services, Configuration);
+            DalLibraryStartup.ConfigureServices(services, Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,7 +42,7 @@ namespace IdentityService
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            DalLibraryStartup.Configure(app);
 
             app.UseEndpoints(endpoints =>
             {

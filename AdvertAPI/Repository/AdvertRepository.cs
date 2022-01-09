@@ -17,7 +17,7 @@ namespace AdvertAPI.Repository
             DbContext = dbContext;
             _mapper = mapper;
         }
-        public Task<bool> DeleteAdvertAsync(int id)
+        public Task<bool> DeleteAdvertAsync(string id)
         {
             try
             {
@@ -32,7 +32,7 @@ namespace AdvertAPI.Repository
             }
             
         }
-        public async Task<IQueryable<Advert>> GetAllAsync(int userId)
+        public async Task<IQueryable<Advert>> GetAllAsync(string userId)
         {
             return await Task.FromResult(DbContext.Adverts.AsQueryable().Where(a=>a.Id == userId));
         }
@@ -47,7 +47,7 @@ namespace AdvertAPI.Repository
             return Task.FromResult(DbContext.Adverts.Where(a => a.Id == userDetails.Id));
         }
 
-        public async Task<Advert> GetByIdAsync(int id)
+        public async Task<Advert> GetByIdAsync(string id)
         {
             return await Task.FromResult(DbContext.Adverts.Where(a => a.Id == id).FirstOrDefault());
 

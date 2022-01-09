@@ -27,7 +27,7 @@ namespace Specifications
         {
             services.AddAutoMapper(typeof(Startup));
             services.AddControllers();
-            DalLibraryStartup.InitializeDalLibrary(services, Configuration);
+            DalLibraryStartup.ConfigureServices(services, Configuration);
             services.AddScoped<IBodyStyleRepository, BodyStyleRepository>();
             services.AddScoped<IBrandRepository,BrandRepository>();
             services.AddScoped<ICountryRepository, CountryRepository>();

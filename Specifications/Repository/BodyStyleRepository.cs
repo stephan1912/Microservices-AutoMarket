@@ -29,7 +29,7 @@ namespace SpecificationsAPI.Repository
             }
         }
 
-        Task<bool> IBodyStyleRepository.DeleteBodyStyle(int id)
+        Task<bool> IBodyStyleRepository.DeleteBodyStyle(string id)
         {
             try
             {
@@ -49,7 +49,7 @@ namespace SpecificationsAPI.Repository
             return await Task.FromResult(DbContext.BodyStyles.AsQueryable());
         }
 
-        async Task<BodyStyle> IBodyStyleRepository.GetById(int id)
+        async Task<BodyStyle> IBodyStyleRepository.GetById(string id)
         {
             return await Task.FromResult(DbContext.BodyStyles.Where(a => a.Id == id).FirstOrDefault());
         }
