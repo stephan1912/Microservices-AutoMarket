@@ -268,10 +268,6 @@ namespace DalLibrary.Models
                     .HasMaxLength(20)
                     .HasColumnName("last_name");
 
-                entity.Property(e => e.Password)
-                    .IsRequired()
-                    .HasMaxLength(13)
-                    .HasColumnName("password");
 
                 entity.Property(e => e.Roles)
                     .HasMaxLength(255)

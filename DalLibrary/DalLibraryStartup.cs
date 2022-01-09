@@ -19,7 +19,7 @@ namespace DalLibrary
                 "server=automarket-db.c85nbo1h0jkt.us-east-1.rds.amazonaws.com;uid=admin;pwd=automarket;database=AutoMarket",
                 new MySqlServerVersion(new Version(8, 0, 27))));
 
-            services.AddIdentityCore<User>()
+            services.AddIdentity<User, IdentityRole>()
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<AutoMarketContext>();
 
@@ -32,7 +32,7 @@ namespace DalLibrary
                 options.User.RequireUniqueEmail = true;
             });
 
-            var key = Encoding.UTF8.GetBytes(("SecretKey"));
+            var key = Encoding.UTF8.GetBytes(("SecretKeyWithAMinimumOf16Charachters"));
 
             services.AddAuthentication(x =>
             {
