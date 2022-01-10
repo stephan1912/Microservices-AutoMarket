@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace SpecificationsAPI.Controllers
 {
-    [Route("country")]
+    [Route("api/v1/country")]
     [ApiController]
-    public class CountryController : Controller
+    public class CountryController : ControllerBase
     {
         private readonly ILogger<CountryController> _logger;
 

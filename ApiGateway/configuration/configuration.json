@@ -1,0 +1,99 @@
+{
+  "ReRoutes": [
+    //----------------------------------For AdvertController------------------------------
+    {
+      "DownstreamPathTemplate": "/api/{version}/advert/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 60268
+        }
+      ],
+      "UpstreamPathTemplate": "/api/{version}/advert/{everything}",
+      "UpstreamHttpMethod": [ "POST", "PUT", "GET", "DELETE" ]
+    },
+    //----------------------------------For BodyStyleController------------------------------
+    {
+      "DownstreamPathTemplate": "/api/{version}/bodyStyle/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 15622
+        }
+      ],
+      "UpstreamPathTemplate": "/api/{version}/bodyStyle/{everything}",
+      "UpstreamHttpMethod": [ "POST", "PUT", "GET", "DELETE" ]
+    },
+    //----------------------------------For BrandController------------------------------
+    {
+      "DownstreamPathTemplate": "/api/{version}/brand/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 15622
+        }
+      ],
+      "UpstreamPathTemplate": "/api/{version}/brand/{everything}",
+      "UpstreamHttpMethod": [ "POST", "PUT", "GET", "DELETE" ]
+    },
+    //----------------------------------For CountryController------------------------------
+    {
+      "DownstreamPathTemplate": "/api/{version}/country/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 15622
+        }
+      ],
+      "UpstreamPathTemplate": "/api/{version}/country/{everything}",
+      "UpstreamHttpMethod": [ "POST", "PUT", "GET", "DELETE" ]
+    },
+    //----------------------------------For FeatureController------------------------------
+    {
+      "DownstreamPathTemplate": "/api/{version}/feature/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 15622
+        }
+      ],
+      "UpstreamPathTemplate": "/api/{version}/feature/{everything}",
+      "UpstreamHttpMethod": [ "POST", "PUT", "GET", "DELETE" ]
+    },
+    //----------------------------------For ModelController------------------------------
+    {
+      "DownstreamPathTemplate": "/api/{version}/model/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 15622
+        }
+      ],
+      "UpstreamPathTemplate": "/api/{version}/model/{everything}",
+      "UpstreamHttpMethod": [ "POST", "PUT", "GET", "DELETE" ]
+    },
+    //----------------------------------For UserController------------------------------
+    {
+      "DownstreamPathTemplate": "/api/{version}/user/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44362
+        }
+      ],
+      "UpstreamPathTemplate": "/api/{version}/user/{everything}",
+      "UpstreamHttpMethod": [ "POST", "PUT", "GET", "DELETE" ]
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:44346"
+  }
+
+}

@@ -6,7 +6,7 @@ using DalLibrary.DTO;
 
 namespace SpecificationsAPI.Controllers
 {
-    [Route("bodyStyle")]
+    [Route("api/v1/bodyStyle")]
     [ApiController]
     public class BodyStyleController : ControllerBase
     {
