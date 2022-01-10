@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using DalLibrary.DTO;
 using DalLibrary.Models;
 using IdentityService.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -121,7 +122,8 @@ namespace IdentityService.Controllers
             };
             foreach (var r in roles)
             {
-                claims.Add(new Claim(_options.ClaimsIdentity.RoleClaimType, r));
+                claims.Add(new Claim("ROLE", r.ToUpper()));
+                claims.Add(new Claim(ClaimTypes.Role, r.ToUpper()));
             }
 
             var expires = DateTime.Now.AddMinutes(30);// Convert.ToDouble(applicationSettings.JWT_ExpireDays));
@@ -136,6 +138,15 @@ namespace IdentityService.Controllers
                 signingCredentials: creds
             );
             return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+
+        [HttpPut]
+        [Route("edit")]
+        [Authorize(Roles = "USER")]
+        public async Task<ActionResult> Edit([FromBody] UserDTO model)
+        {
+            var x = User;
+            return Ok("USER");
         }
     }
 }

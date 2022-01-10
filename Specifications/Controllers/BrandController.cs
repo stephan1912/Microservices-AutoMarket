@@ -1,4 +1,5 @@
 ﻿using DalLibrary.DTO;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using SpecificationsAPI.Repository;
@@ -21,8 +22,10 @@ namespace SpecificationsAPI.Controllers
         }
 
         [HttpGet("all")]
+        [Authorize(Roles = "USER")]
         public async Task<IActionResult> GetAll()
         {
+            var x = User;
             return Ok(await BrandRepository.GetAllAsync());
         }
 

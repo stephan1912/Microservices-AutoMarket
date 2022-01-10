@@ -53,7 +53,8 @@ namespace Specifications
 
             app.UseRouting();
 
-            app.UseAuthorization();
+
+            DalLibraryStartup.Configure(app);
 
             app.UseEndpoints(endpoints =>
             {
