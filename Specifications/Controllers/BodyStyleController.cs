@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using SpecificationsAPI.Repository;
 using System.Threading.Tasks;
 using DalLibrary.DTO;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SpecificationsAPI.Controllers
 {
@@ -27,12 +28,14 @@ namespace SpecificationsAPI.Controllers
         }
 
         [HttpGet("{id}")]
+        [Authorize(Roles = "ADMIN,USER")]
         public async Task<IActionResult> GetById(string id)
         {
             return Ok(await BodyStyleRepository.GetById(id));
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "ADMIN")]
         public IActionResult DeleteBodyStyle(string id)
         {
             if (BodyStyleRepository.DeleteBodyStyle(id) != null)
@@ -41,13 +44,16 @@ namespace SpecificationsAPI.Controllers
             }
             else { return BadRequest(); }
         }
+
         [HttpPost]
+        [Authorize(Roles = "ADMIN")]
         public async Task<IActionResult> CreateBodyStyle(BodyStyleDTO bodyStyleDTO)
         {
             return Ok(await BodyStyleRepository.CreateBodyStyle(bodyStyleDTO));
         }
 
         [HttpPut]
+        [Authorize(Roles = "ADMIN")]
         public async Task<IActionResult>UpdateBodyStyle(BodyStyleDTO bodyStyleDTO)
         {
             return Ok(await BodyStyleRepository.UpdateBodyStyle(bodyStyleDTO));

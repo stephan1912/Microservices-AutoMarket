@@ -37,7 +37,7 @@ namespace AdvertAPI.Repository
             return await Task.FromResult(DbContext.Adverts.AsQueryable().Where(a=>a.Id == userId));
         }
 
-        public  async Task<IQueryable<Advert>> GetAllAdminAsync()
+        public  async Task<IQueryable<Advert>> GetAllAdverts()
         {
             return await Task.FromResult(DbContext.Adverts.AsQueryable());
         }

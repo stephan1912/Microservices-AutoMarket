@@ -1,4 +1,5 @@
 ﻿using DalLibrary.DTO;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using SpecificationsAPI.Repository;
@@ -27,12 +28,14 @@ namespace SpecificationsAPI.Controllers
         }
 
         [HttpGet("{id}")]
+        [Authorize(Roles = "ADMIN,USER")]
         public async Task<IActionResult> GetById(string id)
         {
             return Ok(await CountryRepository.GetById(id));
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "ADMIN")]
         public IActionResult DeleteCountry(string id)
         {
             if (CountryRepository.DeleteCountry(id) != null)
@@ -42,12 +45,14 @@ namespace SpecificationsAPI.Controllers
             else { return BadRequest(); }
         }
         [HttpPost]
+        [Authorize(Roles = "ADMIN")]
         public async Task<IActionResult> CreateCountry(CountryDTO CountryDTO)
         {
             return Ok(await CountryRepository.CreateCountry(CountryDTO));
         }
 
         [HttpPut]
+        [Authorize(Roles = "ADMIN")]
         public async Task<IActionResult> UpdateCountry(CountryDTO CountryDTO)
         {
             return Ok(await CountryRepository.UpdateCountry(CountryDTO));

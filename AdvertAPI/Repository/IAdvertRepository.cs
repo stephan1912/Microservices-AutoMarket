@@ -10,7 +10,7 @@ namespace AdvertAPI.Repository
     {
         Task<bool> DeleteAdvertAsync(string id);
         Task<IQueryable<Advert>> GetAllUserAdvertsAsync(CustomUserDetails userDetails);
-        Task<IQueryable<Advert>> GetAllAdminAsync();
+        Task<IQueryable<Advert>> GetAllAdverts();
         Task<Advert> GetByIdAsync(string id);
         Task<IQueryable<Advert>> GetAllAsync(string userId);
         Task<bool> CreateAdvert(AdvertDTO advert);

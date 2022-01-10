@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using DalLibrary.DTO;
 using DalLibrary.Models;
 using IdentityService.Models;
+using IdentityService.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -22,14 +23,16 @@ namespace IdentityService.Controllers
         public UserController(AutoMarketContext dbContext,
                               UserManager<User> userManager,
                               SignInManager<User> signInManager,
-                              RoleManager<IdentityRole> roleManager)
+                              RoleManager<IdentityRole> roleManager, IUserRepository userRepository)
         {
             DbContext = dbContext;
             UserManager = userManager;
             SignInManager = signInManager;
             RoleManager = roleManager;
+            UserRepository = userRepository;
         }
 
+        public IUserRepository UserRepository { get; }
         public AutoMarketContext DbContext { get; }
         public UserManager<User> UserManager { get; }
         public SignInManager<User> SignInManager { get; }
@@ -85,6 +88,23 @@ namespace IdentityService.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("me")]
+        [Authorize(Roles = "USER")]
+        public async Task<ActionResult> GetMe()
+        {
+            var user = await UserRepository.GetById(User.Claims.FirstOrDefault(c => c.Type == "UserID")?.Value);
+            return Ok(new UserDTO
+            {
+                username = user.UserName,
+                firstName = user.FirstName,
+                lastName = user.LastName,
+                birthdate = (DateTime)user.Birthdate,
+                email = user.Email,
+                id = user.Id
+            });
+        }
+
 
         [HttpPost]
         [Route("session")]
@@ -119,6 +139,7 @@ namespace IdentityService.Controllers
                 new Claim(JwtRegisteredClaimNames.Sub, email),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                new Claim("UserID", user.Id.ToString()),
             };
             foreach (var r in roles)
             {
@@ -145,8 +166,8 @@ namespace IdentityService.Controllers
         [Authorize(Roles = "USER")]
         public async Task<ActionResult> Edit([FromBody] UserDTO model)
         {
-            var x = User;
-            return Ok("USER");
+            model.id = User.Claims.FirstOrDefault(c => c.Type == "UserID")?.Value;
+            return Ok(await UserRepository.UpdateUser(model));
         }
     }
 }
