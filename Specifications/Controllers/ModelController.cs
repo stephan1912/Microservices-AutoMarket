@@ -1,4 +1,5 @@
 ﻿using DalLibrary.DTO;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using SpecificationsAPI.Repository;
@@ -27,12 +28,14 @@ namespace SpecificationsAPI.Controllers
         }
 
         [HttpGet("{id}")]
+        [Authorize(Roles = "ADMIN,USER")]
         public async Task<IActionResult> GetById(string id)
         {
             return Ok(await ModelRepository.GetById(id));
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "ADMIN")]
         public IActionResult DeleteModel(string id)
         {
             if (ModelRepository.DeleteModel(id) != null)
@@ -42,12 +45,14 @@ namespace SpecificationsAPI.Controllers
             else { return BadRequest(); }
         }
         [HttpPost]
+        [Authorize(Roles = "ADMIN")]
         public async Task<IActionResult> CreateModel(ModelDTO ModelDTO)
         {
             return Ok(await ModelRepository.CreateModel(ModelDTO));
         }
 
         [HttpPut]
+        [Authorize(Roles = "ADMIN")]
         public async Task<IActionResult> UpdateModel(ModelDTO ModelDTO)
         {
             return Ok(await ModelRepository.UpdateModel(ModelDTO));

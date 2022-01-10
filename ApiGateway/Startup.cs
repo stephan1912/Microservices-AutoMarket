@@ -25,7 +25,8 @@ namespace ApiGateway
                        .AllowAnyMethod()
                        .AllowAnyHeader();
             }));
-            services.AddOcelot();
+            services.AddAuthorization();
+            services.AddOcelot(); 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -37,7 +38,7 @@ namespace ApiGateway
             }
 
             app.UseCors("AllowAllOrigins");
-
+            app.UseAuthorization();
             app.UseHttpsRedirection();
 
             app.UseRouting();

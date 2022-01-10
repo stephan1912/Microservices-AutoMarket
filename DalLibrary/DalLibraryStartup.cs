@@ -32,26 +32,29 @@ namespace DalLibrary
                 options.User.RequireUniqueEmail = true;
             });
 
-            var key = Encoding.UTF8.GetBytes(("SecretKeyWithAMinimumOf16Charachters"));
+            var key = Encoding.UTF8.GetBytes("SecretKeyWithAMinimumOf16Charachters");
 
             services.AddAuthentication(x =>
             {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-                x.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
             }).AddJwtBearer(x =>
             {
                 x.RequireHttpsMetadata = false;
-                x.SaveToken = false;
-                x.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+                x.SaveToken = true;
+                x.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuerSigningKey = true,
                     IssuerSigningKey = new SymmetricSecurityKey(key),
-                    ValidateIssuer = false,
-                    ValidateAudience = false,
+                    ValidateIssuer = true,
+                    ValidIssuer = "AutoMarket",
+                    ValidateAudience = true,
+                    ValidAudience = "AutoMarket",
                     ClockSkew = System.TimeSpan.Zero
                 };
             });
+
+            //services.AddAuthorization();
         }
         public static void Configure(IApplicationBuilder app)
         {
