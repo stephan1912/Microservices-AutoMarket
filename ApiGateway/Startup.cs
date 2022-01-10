@@ -18,6 +18,13 @@ namespace ApiGateway
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            //services.AddControllers();
+            services.AddCors(o => o.AddPolicy("AllowAllOrigins", builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            }));
             services.AddOcelot();
         }
 
@@ -28,6 +35,10 @@ namespace ApiGateway
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors("AllowAllOrigins");
+
+            app.UseHttpsRedirection();
 
             app.UseRouting();
 
