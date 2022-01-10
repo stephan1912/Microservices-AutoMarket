@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace SpecificationsAPI.Controllers
 {
-    [Route("feature")]
+    [Route("api/v1/feature")]
     [ApiController]
-    public class FeatureController : Controller
+    public class FeatureController : ControllerBase
     {
         private readonly ILogger<FeatureController> _logger;
 

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace SpecificationsAPI.Controllers
 {
-    [Route("brand")]
+    [Route("api/v1/brand")]
     [ApiController]
-    public class BrandController : Controller
+    public class BrandController : ControllerBase
     {
         private readonly ILogger<BrandController> _logger;
 

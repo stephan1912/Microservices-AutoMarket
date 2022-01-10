@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace SpecificationsAPI.Controllers
 {
-    [Route("model")]
+    [Route("api/v1/model")]
     [ApiController]
-    public class ModelController : Controller
+    public class ModelController : ControllerBase
     {
         private readonly ILogger<ModelController> _logger;
 
