@@ -11,7 +11,34 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdvertAPI", "AdvertAPI\Adve
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpecificationsAPI", "Specifications\SpecificationsAPI.csproj", "{4E35577F-73FB-41FC-8724-ADACF757B970}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiGateway", "ApiGateway\ApiGateway.csproj", "{D5847D64-ED2D-4E4E-9C5A-F39D2F659AC1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiGateway", "ApiGateway\ApiGateway.csproj", "{D5847D64-ED2D-4E4E-9C5A-F39D2F659AC1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9C96DADD-4407-4834-987A-C5ED0C6F9DB7}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.override.yml = docker-compose.override.yml
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "AngularApp", "AngularApp\", "{AEF6B387-A48E-4ED6-8DB5-15E7B55A849D}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_62477"
+		Debug.AspNetCompiler.PhysicalPath = "AngularApp\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_62477\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_62477"
+		Release.AspNetCompiler.PhysicalPath = "AngularApp\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_62477\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "62477"
+		SlnRelativePath = "AngularApp\"
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,9 +66,16 @@ Global
 		{D5847D64-ED2D-4E4E-9C5A-F39D2F659AC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5847D64-ED2D-4E4E-9C5A-F39D2F659AC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5847D64-ED2D-4E4E-9C5A-F39D2F659AC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEF6B387-A48E-4ED6-8DB5-15E7B55A849D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEF6B387-A48E-4ED6-8DB5-15E7B55A849D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEF6B387-A48E-4ED6-8DB5-15E7B55A849D}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEF6B387-A48E-4ED6-8DB5-15E7B55A849D}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{AEF6B387-A48E-4ED6-8DB5-15E7B55A849D} = {9C96DADD-4407-4834-987A-C5ED0C6F9DB7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9870BD75-736A-409A-B453-3D6AEC1D9D07}

@@ -1,0 +1,27 @@
+version: "3.8"
+services: 
+    advert.api:
+        image: advert_image
+        build: 
+            context: .
+            dockerfile: AdvertAPI/Dockerfile
+    specifications.api:
+        image: specifications_image
+        build: 
+            context: .
+            dockerfile: Specifications/Dockerfile
+    identity.api:
+        image: identity_image
+        build: 
+            context: .
+            dockerfile: IdentityService/Dockerfile
+    gateway.api:
+        image: gateway_api_image
+        build: 
+            context: .
+            dockerfile: ApiGateway/Dockerfile
+    #automarket.web:
+    #    image: automarket_web_image
+    #    build: 
+    #        context: .
+    #        dockerfile: AngularApp/Dockerfile

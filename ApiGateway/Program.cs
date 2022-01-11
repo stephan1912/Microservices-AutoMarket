@@ -26,7 +26,7 @@ namespace ApiGateway
                 builder.ConfigureAppConfiguration((host, config) =>
                 {
                     config.AddJsonFile(Path.Combine("configuration", "configuration.json"));
-                }).UseStartup<Startup>();
+                }).UseWebRoot("wwwroot").UseStartup<Startup>();
                 return builder.Build();
             }
             catch (Exception ex)

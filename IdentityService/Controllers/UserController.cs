@@ -91,7 +91,7 @@ namespace IdentityService.Controllers
 
         [HttpGet]
         [Route("me")]
-        [Authorize(Roles = "USER")]
+        [Authorize(Roles = "USER,ADMIN")]
         public async Task<ActionResult> GetMe()
         {
             var user = await UserRepository.GetById(User.Claims.FirstOrDefault(c => c.Type == "UserID")?.Value);
@@ -179,7 +179,7 @@ namespace IdentityService.Controllers
 
         [HttpPut]
         [Route("me")]
-        [Authorize(Roles = "USER")]
+        [Authorize(Roles = "USER,ADMIN")]
         public async Task<ActionResult> Edit([FromBody] UserDTO model)
         {
             model.id = User.Claims.FirstOrDefault(c => c.Type == "UserID")?.Value;
@@ -201,7 +201,7 @@ namespace IdentityService.Controllers
 
         [HttpPut]
         [Route("me/password")]
-        [Authorize(Roles = "USER")]
+        [Authorize(Roles = "USER,ADMIN")]
         public async Task<ActionResult> EditPassword([FromBody] PasswordRequest model)
         {
             try

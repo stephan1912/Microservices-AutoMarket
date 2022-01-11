@@ -1,0 +1,34 @@
+version: "3.8"
+services: 
+    advert.api:
+        container_name: advert.api
+        environment: 
+            - ASPNETCORE_ENVIRONMENT=Development
+        ports:
+            - "44390:80"
+    specifications.api:
+        container_name: specifications.api
+        environment: 
+            - ASPNETCORE_ENVIRONMENT=Development
+        ports:
+            - "44322:80"
+    identity.api:
+        container_name: identity.api
+        environment: 
+            - ASPNETCORE_ENVIRONMENT=Development
+        ports:
+            - "44362:80"
+    gateway.api:
+        container_name: gateway.api
+        environment: 
+            - ASPNETCORE_ENVIRONMENT=Development
+        ports:
+            - "44346:80"
+    #automarket.web:
+    #    container_name: automarket.web
+    #    ports:
+    #        - "4200:80"
+networks:
+    elastic:
+        driver: bridge
+    

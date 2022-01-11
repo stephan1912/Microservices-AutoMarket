@@ -170,7 +170,7 @@ namespace AdvertAPI.Repository
             int totalCount = all.Count();
             if(page > 0)
             {
-                all = all.Skip(1 * (page - 1)).Take(page);
+                all = all.Skip(1 * (page - 1)).Take(1);
             }
             return await Task.FromResult(new AdvertResponse
             {

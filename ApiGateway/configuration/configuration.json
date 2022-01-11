@@ -3,10 +3,10 @@
     //----------------------------------For AdvertController------------------------------
     {
       "DownstreamPathTemplate": "/api/{version}/advert/{everything}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
+          "Host": "host.docker.internal",
           "Port": 44390
         }
       ],
@@ -15,10 +15,10 @@
     },
     {
       "DownstreamPathTemplate": "/api/{version}/advert",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
+          "Host": "host.docker.internal",
           "Port": 44390
         }
       ],
@@ -28,10 +28,10 @@
     //----------------------------------For BodyStyleController------------------------------
     {
       "DownstreamPathTemplate": "/api/{version}/bodyStyle/{everything}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
+          "Host": "host.docker.internal",
           "Port": 44322
         }
       ],
@@ -40,10 +40,10 @@
     },
     {
       "DownstreamPathTemplate": "/api/{version}/bodyStyle",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
+          "Host": "host.docker.internal",
           "Port": 44322
         }
       ],
@@ -53,10 +53,10 @@
     //----------------------------------For BrandController------------------------------
     {
       "DownstreamPathTemplate": "/api/{version}/brand/{everything}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
+          "Host": "host.docker.internal",
           "Port": 44322
         }
       ],
@@ -65,10 +65,10 @@
     },
     {
       "DownstreamPathTemplate": "/api/{version}/brand",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
+          "Host": "host.docker.internal",
           "Port": 44322
         }
       ],
@@ -78,10 +78,10 @@
     //----------------------------------For CountryController------------------------------
     {
       "DownstreamPathTemplate": "/api/{version}/country/{everything}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
+          "Host": "host.docker.internal",
           "Port": 44322
         }
       ],
@@ -90,10 +90,10 @@
     },
     {
       "DownstreamPathTemplate": "/api/{version}/country",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
+          "Host": "host.docker.internal",
           "Port": 44322
         }
       ],
@@ -103,10 +103,10 @@
     //----------------------------------For FeatureController------------------------------
     {
       "DownstreamPathTemplate": "/api/{version}/feature/{everything}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
+          "Host": "host.docker.internal",
           "Port": 44322
         }
       ],
@@ -115,10 +115,10 @@
     },
     {
       "DownstreamPathTemplate": "/api/{version}/feature",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
+          "Host": "host.docker.internal",
           "Port": 44322
         }
       ],
@@ -128,10 +128,10 @@
     //----------------------------------For ModelController------------------------------
     {
       "DownstreamPathTemplate": "/api/{version}/model/{everything}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
+          "Host": "host.docker.internal",
           "Port": 44322
         }
       ],
@@ -140,10 +140,10 @@
     },
     {
       "DownstreamPathTemplate": "/api/{version}/model",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
+          "Host": "host.docker.internal",
           "Port": 44322
         }
       ],
@@ -153,10 +153,10 @@
     //----------------------------------For UserController------------------------------
     {
       "DownstreamPathTemplate": "/api/{version}/user/{everything}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
+          "Host": "host.docker.internal",
           "Port": 44362
         }
       ],
@@ -165,7 +165,7 @@
     }
   ],
   "GlobalConfiguration": {
-    "BaseUrl": "http://localhost:44346"
+    "BaseUrl": "http://host.docker.internal:44346"
   }
 
 }
