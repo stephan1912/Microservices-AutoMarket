@@ -6,7 +6,7 @@ namespace DalLibrary.DTO
 {
     public class FeatureDTO
     {
-        public string fe_Id;
-        public string Name;
+        public string id { get; set; }
+        public string Name { get; set; }
     }
 }

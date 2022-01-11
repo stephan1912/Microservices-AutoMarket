@@ -28,7 +28,7 @@ namespace AdvertAPI.Controllers
             AdvertRepository = advertRepository;
         }
 
-        [HttpGet("/all")]
+        [HttpGet("all")]
         public async Task<IActionResult> GetAllAdverts()
         {
             return Ok(await AdvertRepository.GetAllAdverts());

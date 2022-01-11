@@ -18,7 +18,7 @@ export class CountryService {
     
 
     public deleteCountry(country: CountryModel): Observable<any>{
-        return this.http.delete(this.appSettings.baseApiUrl + "country/" + country.country_id);
+        return this.http.delete(this.appSettings.baseApiUrl + "country/" + country.id);
     }
 
     public getAllCountrys(): Observable<CountryModel[]>{

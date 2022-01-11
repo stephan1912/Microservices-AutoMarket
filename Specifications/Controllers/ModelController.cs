@@ -1,4 +1,5 @@
 ﻿using DalLibrary.DTO;
+using DalLibrary.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -46,16 +47,16 @@ namespace SpecificationsAPI.Controllers
         }
         [HttpPost]
         [Authorize(Roles = "ADMIN")]
-        public async Task<IActionResult> CreateModel(ModelDTO ModelDTO)
+        public async Task<IActionResult> CreateModel(Model model)
         {
-            return Ok(await ModelRepository.CreateModel(ModelDTO));
+            return Ok(await ModelRepository.CreateModel(model));
         }
 
         [HttpPut]
         [Authorize(Roles = "ADMIN")]
-        public async Task<IActionResult> UpdateModel(ModelDTO ModelDTO)
+        public async Task<IActionResult> UpdateModel(Model model)
         {
-            return Ok(await ModelRepository.UpdateModel(ModelDTO));
+            return Ok(await ModelRepository.UpdateModel(model));
         }
     }
 }

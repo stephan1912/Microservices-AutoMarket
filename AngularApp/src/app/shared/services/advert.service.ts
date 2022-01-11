@@ -37,14 +37,7 @@ export class AdvertService {
 
     public GetAllAdvertsFiltered(filter: any, page: number = 1): Observable<AdvertModel[]>{
         if(filter == null){
-            const filterBtoa = this.currentFilter != null ? btoa(JSON.stringify(this.currentFilter)) : ''
-            return this.http.get<any>(this.appSettings.baseApiUrl + 'advert/all?filter=' + filterBtoa + '&page=' + page).pipe(map(ads => {
-                this.advertList = ads.adverts;
-                this.totalCount = ads.totalCount;
-                this.totalPages = this.totalCount / this.pageSize;
-                this.currentPage = page;
-                return ads;
-            }));
+            return this.http.get<any>(this.appSettings.baseApiUrl + 'advert/all');
         }
         this.currentFilter = filter;
         return this.http.get<any>(this.appSettings.baseApiUrl + 'advert/all?filter=' + btoa(JSON.stringify(filter)) + '&page=' + page).pipe(map(ads => {

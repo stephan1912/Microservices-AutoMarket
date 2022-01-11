@@ -50,8 +50,8 @@ export class ModelCreateComponent implements OnInit {
         if (this.modelService.selectedModel != null) {
             this.customService.start();
             this.modelService.updateModel(<any>{
-                brand_id: this.brandService.selectedBrand.brand_id,
-                model_id: this.modelService.selectedModel.model_id,
+                brandid: this.brandService.selectedBrand.id,
+                id: this.modelService.selectedModel.model_id,
                 name: this.f.name.value,
                 generation: this.f.generation.value,
                 launchYear: this.f.launchYear.value,
@@ -60,7 +60,7 @@ export class ModelCreateComponent implements OnInit {
                 this.otherErrorsDiv = "";
                 this.reinitForms();
                 this.customService.success('Modelul a fost actualizat!', 'Succes');
-                this.modelService.getAllModels(this.brandService.selectedBrand.brand_id).subscribe(resp => {
+                this.modelService.getAllModels(this.brandService.selectedBrand.id).subscribe(resp => {
                     this.customService.stop();
                 }, this.customService.errorFromResp)
             }, this.customService.errorFromResp);
@@ -68,7 +68,7 @@ export class ModelCreateComponent implements OnInit {
         else {
             this.customService.start();
             this.modelService.createModel(<any>{
-                brand_id: this.brandService.selectedBrand.brand_id,
+                brandid: this.brandService.selectedBrand.id,
                 name: this.f.name.value,
                 generation: this.f.generation.value,
                 launchYear: this.f.launchYear.value,
@@ -77,7 +77,7 @@ export class ModelCreateComponent implements OnInit {
                 this.otherErrorsDiv = "";
                 this.reinitForms();
                 this.customService.success('Modelul a fost creat!', 'Succes');
-                this.modelService.getAllModels(this.brandService.selectedBrand.brand_id).subscribe(resp => {
+                this.modelService.getAllModels(this.brandService.selectedBrand.id).subscribe(resp => {
                     this.customService.stop();
                 }, this.customService.errorFromResp);
             }, this.customService.errorFromResp);

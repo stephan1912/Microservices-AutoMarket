@@ -26,7 +26,7 @@ export class ModelListComponent implements OnInit {
              return;
         }
         this.customService.start();
-        this.modelService.getAllModels(this.brandService.selectedBrand.brand_id).subscribe(r => {
+        this.modelService.getAllModels(this.brandService.selectedBrand.id).subscribe(r => {
             this.customService.stop();
         }, this.customService.errorFromResp);
      }
@@ -39,7 +39,7 @@ export class ModelListComponent implements OnInit {
      deleteModel(model: ModelObject){
         this.modelService.deleteModel(model).subscribe(r => {
                 this.customService.success('Modeleul a fost sters!', 'Success');
-                  this.modelService.getAllModels(this.brandService.selectedBrand.brand_id).subscribe(resp => {
+                  this.modelService.getAllModels(this.brandService.selectedBrand.id).subscribe(resp => {
                       this.customService.stop();
                   }, this.customService.errorFromResp)
         }, this.customService.errorFromResp)

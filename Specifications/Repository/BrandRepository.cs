@@ -18,8 +18,12 @@ namespace SpecificationsAPI.Repository
         }
         public Task<bool> CreateBrand(BrandDTO BrandDTO)
         {
+            var rand = new Random();
+            BrandDTO.id = rand.Next().ToString();
+
             if (DbContext.Brands.Add(_mapper.Map<Brand>(BrandDTO)) != null)
             {
+                DbContext.SaveChanges(); 
                 return Task.FromResult(true);
             }
             else
@@ -55,7 +59,7 @@ namespace SpecificationsAPI.Repository
 
         public Task<bool> UpdateBrand(BrandDTO BrandDTO)
         {
-            var value = DbContext.Brands.Where(c => c.Id == BrandDTO.brand_id).FirstOrDefault();
+            var value = DbContext.Brands.Where(c => c.Id == BrandDTO.id).FirstOrDefault();
             if (value != null)
             {
                 value.Code = BrandDTO?.code;
@@ -90,10 +94,9 @@ namespace SpecificationsAPI.Repository
         //    throw new NotImplementedException();
         //}
 
-        //public async Task<IQueryable<Model>> GetAllModel(int id)
-        //{
-
-        //    return await Task.FromResult(DbContext.Model.);
-        //}
+        public async Task<IQueryable<Model>> getAllModels(string id)
+        {
+            return await Task.FromResult(DbContext.Models.Where(a=>a.BrandId ==id).AsQueryable());
+        }
     }
 }

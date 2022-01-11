@@ -48,7 +48,7 @@ export class BrandCreateComponent implements OnInit {
         if (this.brandService.selectedBrand != null) {
             this.customService.start();
             this.brandService.updateBrand(<BrandModel>{
-                brand_id: this.brandService.selectedBrand.brand_id,
+                id: this.brandService.selectedBrand.id,
                 name: this.f.brandName.value,
                 code: this.f.brandCode.value,
             }).subscribe(r => {

@@ -18,7 +18,7 @@ export class BodyStyleService {
     
 
     public deleteBodyStyle(bodyStyle: BodyStyleModel): Observable<any>{
-        return this.http.delete(this.appSettings.baseApiUrl + "bodyStyle/" + bodyStyle.bs_id);
+        return this.http.delete(this.appSettings.baseApiUrl + "bodyStyle/" + bodyStyle.id);
     }
 
     public getAllBodyStyles(): Observable<BodyStyleModel[]>{

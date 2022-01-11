@@ -5,14 +5,14 @@
         <label for="bsSelect">Caroserie:</label>
         <select class="form-control"  formControlName="bsSelect" id="bsSelect" (change)="bsChanged($event.target.value)">
             <option selected disabled>Alege o caroserie</option>
-            <option *ngFor="let p of bsList" value="{{p.bs_id}}">{{p.name}}</option>
+            <option *ngFor="let p of bsList" value="{{p.id}}">{{p.name}}</option>
         </select>
     </div>
     <div class="form-group col-md-3">
         <label for="brandSelect">Brand:</label>
             <select class="form-control"  formControlName="brandSelect" id="brandSelect" (change)="brandChanged($event.target.value)">
                 <option selected disabled>Alege un brand</option>
-                <option *ngFor="let p of brandsList" value="{{p.brand_id}}">{{p.name}}</option>
+                <option *ngFor="let p of brandsList" value="{{p.id}}">{{p.name}}</option>
             </select>
     </div>
     <div class="form-group col-md-3">

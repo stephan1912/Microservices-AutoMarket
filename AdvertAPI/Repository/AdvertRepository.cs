@@ -71,7 +71,7 @@ namespace AdvertAPI.Repository
             if (value != null)
             {
                 value.Vin = advert.vin;
-                value.CountryId = advert.countryDTO.country_id;
+                value.CountryId = advert.countryDTO.id;
                 value.Km = advert.km;
                 value.Price = advert.price;
                 value.Registered = advert.registered;
@@ -79,7 +79,7 @@ namespace AdvertAPI.Repository
                 value.Year = advert.year;
                 value.UserId = advert.user_id;
                 value.HorsePower = advert.horsePower;
-                value.BodyStyleId = advert.bodyStyleDTO.bs_Id;
+                value.BodyStyleId = advert.bodyStyleDTO.id;
                 value.Description = advert.description;
                 value.Drivetrain = advert.drivetrain.ToString();
                 value.EngineCap = advert.engineCap;

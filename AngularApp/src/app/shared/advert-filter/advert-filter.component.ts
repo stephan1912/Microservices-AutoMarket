@@ -85,7 +85,7 @@ export class AdvertFilterComponent implements OnInit {
     selectedBrand: number = -1;
     brandChanged(event) {
         this.selectedBrand = event;
-        this.modelListToShow = this.brandsList.find(b => b.brand_id == event).models;
+        this.modelListToShow = this.brandsList.find(b => b.id == event).models;
         (document.getElementById('modelSelect') as any).value = -1;
     }
 

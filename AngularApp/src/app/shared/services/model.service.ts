@@ -16,11 +16,11 @@ export class ModelService {
     
 
     public deleteModel(model: ModelObject): Observable<any>{
-        return this.http.delete(this.appSettings.baseApiUrl + "model/" + model.model_id);
+        return this.http.delete(this.appSettings.baseApiUrl + "model/" + model["id"]);
     }
 
-    public getAllModels(brand_id: number): Observable<ModelObject[]>{
-        return this.http.get<ModelObject[]>(this.appSettings.baseApiUrl + "brand/" +  brand_id + "/models").pipe(map(list => {
+    public getAllModels(id: number): Observable<ModelObject[]>{
+        return this.http.get<ModelObject[]>(this.appSettings.baseApiUrl + "brand/" +  id + "/models").pipe(map(list => {
             this.modelList = list;
             return list;
         }));

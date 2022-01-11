@@ -17,10 +17,13 @@ namespace SpecificationsAPI.Repository
             _mapper = mapper;
         }
 
-        public Task<bool> CreateModel(ModelDTO ModelDTO)
+        public Task<bool> CreateModel(Model model)
         {
-            if (DbContext.Models.Add(_mapper.Map<Model>(ModelDTO)) != null)
+            var rand = new Random();
+            model.Id = rand.Next().ToString();
+            if (DbContext.Models.Add(model) != null)
             {
+                DbContext.SaveChanges();   
                 return Task.FromResult(true);
             }
             else
@@ -29,15 +32,15 @@ namespace SpecificationsAPI.Repository
             }
         }
 
-        public Task<bool> UpdateModel(ModelDTO ModelDTO)
+        public Task<bool> UpdateModel(Model model)
         {
-            var value = DbContext.Models.Where(c => c.Id == ModelDTO.model_id).FirstOrDefault();
+            var value = DbContext.Models.Where(c => c.Id == model.Id).FirstOrDefault();
             if (value != null)
             {
-                value.Name = ModelDTO.name;
-                value.Generation = ModelDTO.generation;
-                value.FinalYear = ModelDTO.finalYear;
-                value.LaunchYear = ModelDTO.launchYear;
+                value.Name = model.Name;
+                value.Generation = model.Generation;
+                value.FinalYear = model.FinalYear;
+                value.LaunchYear = model.LaunchYear;
                 DbContext.SaveChanges();
                 return Task.FromResult(true);
             }

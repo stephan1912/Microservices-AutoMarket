@@ -34,6 +34,13 @@ namespace SpecificationsAPI.Controllers
             return Ok(await BrandRepository.GetById(id));
         }
 
+        [HttpGet("{id}/models")]
+        [Authorize(Roles = "ADMIN,USER")]
+        public async Task<IActionResult> GetModels(string id)
+        {
+            return Ok(await BrandRepository.getAllModels(id));
+        }
+
         [HttpDelete("{id}")]
         [Authorize(Roles = "ADMIN")]
         public IActionResult DeleteBrand(string id)
@@ -46,7 +53,7 @@ namespace SpecificationsAPI.Controllers
         }
         [HttpPost]
         [Authorize(Roles = "ADMIN")]
-        public async Task<IActionResult> CreateBrand(BrandDTO BrandDTO)
+        public async Task<IActionResult> CreateBrand([FromBody] BrandDTO BrandDTO)
         {
             return Ok(await BrandRepository.CreateBrand(BrandDTO));
         }

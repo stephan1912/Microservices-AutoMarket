@@ -18,7 +18,7 @@ export class BrandService {
     
 
     public deleteBrand(brand: BrandModel): Observable<any>{
-        return this.http.delete(this.appSettings.baseApiUrl + "brand/" + brand.brand_id);
+        return this.http.delete(this.appSettings.baseApiUrl + "brand/" + brand.id);
     }
 
     public getAllBrands(): Observable<BrandModel[]>{

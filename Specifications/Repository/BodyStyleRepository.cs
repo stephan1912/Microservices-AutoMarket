@@ -19,8 +19,11 @@ namespace SpecificationsAPI.Repository
         }
         Task<bool> IBodyStyleRepository.CreateBodyStyle(BodyStyleDTO bodyStyleDTO)
         {
+            var rand = new Random();
+            bodyStyleDTO.id = rand.Next().ToString();
             if (DbContext.BodyStyles.Add(_mapper.Map<BodyStyle>(bodyStyleDTO))!=null)
             {
+                DbContext.SaveChanges();
                 return Task.FromResult(true);
             }
             else
@@ -56,7 +59,7 @@ namespace SpecificationsAPI.Repository
 
         Task<bool> IBodyStyleRepository.UpdateBodyStyle(BodyStyleDTO bodyStyleDTO)
         {
-            var value = DbContext.BodyStyles.Where(c => c.Id == bodyStyleDTO.bs_Id).FirstOrDefault();
+            var value = DbContext.BodyStyles.Where(c => c.Id == bodyStyleDTO.id).FirstOrDefault();
             if (value!= null)
             {
                 value.Description = bodyStyleDTO?.Description;

@@ -6,8 +6,8 @@ namespace DalLibrary.DTO
 {
     public class BrandDTO
     {
-        public string brand_id;
-        public string name;
-        public string code;
+        public string id { get; set; }
+        public string name { get; set; }
+        public string code { get; set; }
     }
 }

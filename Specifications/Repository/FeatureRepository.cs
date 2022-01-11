@@ -19,8 +19,11 @@ namespace SpecificationsAPI.Repository
 
         public Task<bool> CreateFeature(FeatureDTO FeatureDTO)
         {
+            var rand = new Random();
+            FeatureDTO.id = rand.Next().ToString();
             if (DbContext.Features.Add(_mapper.Map<Feature>(FeatureDTO)) != null)
             {
+                DbContext.SaveChanges();
                 return Task.FromResult(true);
             }
             else
@@ -31,7 +34,7 @@ namespace SpecificationsAPI.Repository
 
         public Task<bool> UpdateFeature(FeatureDTO FeatureDTO)
         {
-            var value = DbContext.Features.Where(c => c.Id == FeatureDTO.fe_Id).FirstOrDefault();
+            var value = DbContext.Features.Where(c => c.Id == FeatureDTO.id).FirstOrDefault();
             if (value != null)
             {
                 value.Name = FeatureDTO.Name;

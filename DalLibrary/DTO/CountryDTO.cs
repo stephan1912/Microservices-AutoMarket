@@ -7,8 +7,8 @@ namespace DalLibrary.DTO
     public class CountryDTO
     {
 
-        public string country_id;
-        public string Name;
+        public string id { get; set; }
+    public string Name { get; set; } 
 
     }
 

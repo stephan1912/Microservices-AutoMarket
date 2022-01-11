@@ -13,6 +13,18 @@
       "UpstreamPathTemplate": "/api/{version}/advert/{everything}",
       "UpstreamHttpMethod": [ "POST", "PUT", "GET", "DELETE" ]
     },
+    {
+      "DownstreamPathTemplate": "/api/{version}/advert",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44390
+        }
+      ],
+      "UpstreamPathTemplate": "/api/{version}/advert",
+      "UpstreamHttpMethod": [ "POST", "PUT" ]
+    },
     //----------------------------------For BodyStyleController------------------------------
     {
       "DownstreamPathTemplate": "/api/{version}/bodyStyle/{everything}",
@@ -25,6 +37,18 @@
       ],
       "UpstreamPathTemplate": "/api/{version}/bodyStyle/{everything}",
       "UpstreamHttpMethod": [ "POST", "PUT", "GET", "DELETE" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/{version}/bodyStyle",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44322
+        }
+      ],
+      "UpstreamPathTemplate": "/api/{version}/bodyStyle",
+      "UpstreamHttpMethod": [ "POST", "PUT" ]
     },
     //----------------------------------For BrandController------------------------------
     {
@@ -39,6 +63,18 @@
       "UpstreamPathTemplate": "/api/{version}/brand/{everything}",
       "UpstreamHttpMethod": [ "POST", "PUT", "GET", "DELETE" ]
     },
+    {
+      "DownstreamPathTemplate": "/api/{version}/brand",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44322
+        }
+      ],
+      "UpstreamPathTemplate": "/api/{version}/brand",
+      "UpstreamHttpMethod": [ "POST", "PUT" ]
+    },
     //----------------------------------For CountryController------------------------------
     {
       "DownstreamPathTemplate": "/api/{version}/country/{everything}",
@@ -51,6 +87,18 @@
       ],
       "UpstreamPathTemplate": "/api/{version}/country/{everything}",
       "UpstreamHttpMethod": [ "POST", "PUT", "GET", "DELETE" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/{version}/country",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44322
+        }
+      ],
+      "UpstreamPathTemplate": "/api/{version}/country",
+      "UpstreamHttpMethod": [ "POST", "PUT" ]
     },
     //----------------------------------For FeatureController------------------------------
     {
@@ -65,6 +113,18 @@
       "UpstreamPathTemplate": "/api/{version}/feature/{everything}",
       "UpstreamHttpMethod": [ "POST", "PUT", "GET", "DELETE" ]
     },
+    {
+      "DownstreamPathTemplate": "/api/{version}/feature",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44322
+        }
+      ],
+      "UpstreamPathTemplate": "/api/{version}/feature",
+      "UpstreamHttpMethod": [ "POST", "PUT" ]
+    },
     //----------------------------------For ModelController------------------------------
     {
       "DownstreamPathTemplate": "/api/{version}/model/{everything}",
@@ -77,6 +137,18 @@
       ],
       "UpstreamPathTemplate": "/api/{version}/model/{everything}",
       "UpstreamHttpMethod": [ "POST", "PUT", "GET", "DELETE" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/{version}/model",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 44322
+        }
+      ],
+      "UpstreamPathTemplate": "/api/{version}/model",
+      "UpstreamHttpMethod": [ "POST", "PUT" ]
     },
     //----------------------------------For UserController------------------------------
     {

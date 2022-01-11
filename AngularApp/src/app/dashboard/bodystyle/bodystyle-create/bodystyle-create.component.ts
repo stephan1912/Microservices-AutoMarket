@@ -49,7 +49,7 @@ export class BodyStyleCreateComponent implements OnInit {
         if (this.bodyStyleService.selectedBodyStyle != null) {
             this.customService.start();
             this.bodyStyleService.updateBodyStyle(<BodyStyleModel>{
-                bs_id: this.bodyStyleService.selectedBodyStyle.bs_id,
+                id: this.bodyStyleService.selectedBodyStyle.id,
                 name: this.f.bodyStyleName.value,
                 description: this.f.bodyStyleDescription.value,
             }).subscribe(r => {

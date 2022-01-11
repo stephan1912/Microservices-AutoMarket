@@ -48,7 +48,7 @@ export class CountryCreateComponent implements OnInit {
         if (this.countryService.selectedCountry != null) {
             this.customService.start();
             this.countryService.updateCountry(<CountryModel>{
-                country_id: this.countryService.selectedCountry.country_id,
+                id: this.countryService.selectedCountry.id,
                 name: this.f.countryName.value,
             }).subscribe(r => {
                 this.otherErrorsDiv = "";

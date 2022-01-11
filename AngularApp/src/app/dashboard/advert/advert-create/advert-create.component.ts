@@ -54,14 +54,14 @@ export class AdvertCreateComponent implements OnInit {
                             let cBrand = brands.find(b => b.models.find(m => m.model_id == this.advertService.SavedAdvert.model.model_id) != undefined);
                             this.modelListToShow = cBrand.models;
                             this.changeDetector.detectChanges();
-                            (document.getElementById('brandSelect') as any).value = this.selectedBrand =  cBrand.brand_id; 
+                            (document.getElementById('brandSelect') as any).value = this.selectedBrand =  cBrand.id; 
                             (document.getElementById('modelSelect') as any).value = this.selectedModel = this.advertService.SavedAdvert.model.model_id;
-                            (document.getElementById('bsSelect') as any).value = this.selectedBs = this.advertService.SavedAdvert.bodyStyleDTO.bs_id;
+                            (document.getElementById('bsSelect') as any).value = this.selectedBs = this.advertService.SavedAdvert.bodyStyleDTO.id;
 
                             (document.getElementById('gearboxType') as any).value = this.selectedGearbox = this.advertService.SavedAdvert.gearboxType;
                             (document.getElementById('drivetrain') as any).value = this.selectedDrivetrain = this.advertService.SavedAdvert.drivetrain;
                             (document.getElementById('fuel') as any).value = this.selectedFuel = this.advertService.SavedAdvert.fuel;
-                            (document.getElementById('countrySelect') as any).value = this.selectedCountry = this.advertService.SavedAdvert.countryDTO.country_id;
+                            (document.getElementById('countrySelect') as any).value = this.selectedCountry = this.advertService.SavedAdvert.countryDTO.id;
                             (document.getElementById('registered') as any).checked = this.advertService.SavedAdvert.registered;
                             (document.getElementById('serviceDocs') as any).checked = this.advertService.SavedAdvert.serviceDocs;
 
@@ -143,7 +143,7 @@ export class AdvertCreateComponent implements OnInit {
             this.customService.start();
             this.advertService.UpdateAdvert(<any>{
                 advert_id: this.advertService.SavedAdvert.advert_id,
-                country_id: this.selectedCountry,
+                id: this.selectedCountry,
                 model_id: this.selectedModel,
                 bodyStyle_id: this.selectedBs,
                 gearboxType: this.selectedGearbox,
@@ -170,7 +170,7 @@ export class AdvertCreateComponent implements OnInit {
         else {
             this.customService.start();
             this.advertService.CreateAdvert(<any>{
-                country_id: this.selectedCountry,
+                id: this.selectedCountry,
                 model_id: this.selectedModel,
                 bodyStyle_id: this.selectedBs,
                 gearboxType: this.selectedGearbox,
@@ -200,7 +200,7 @@ export class AdvertCreateComponent implements OnInit {
     selectedBrand: number = -1;
     brandChanged(event) {
         this.selectedBrand = event;
-        this.modelListToShow = this.brandsList.find(b => b.brand_id == event).models;
+        this.modelListToShow = this.brandsList.find(b => b.id == event).models;
         (document.getElementById('modelSelect') as any).value = -1;
     }
 

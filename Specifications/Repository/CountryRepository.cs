@@ -19,8 +19,11 @@ namespace SpecificationsAPI.Repository
         }
         public Task<bool> CreateCountry(CountryDTO CountryDTO)
         {
+            var rand = new Random();
+            CountryDTO.id = rand.Next().ToString();
             if (DbContext.Countries.Add(_mapper.Map<Country>(CountryDTO)) != null)
             {
+                DbContext.SaveChanges();
                 return Task.FromResult(true);
             }
             else
@@ -56,7 +59,7 @@ namespace SpecificationsAPI.Repository
 
         public Task<bool> UpdateCountry(CountryDTO CountryDTO)
         {
-            var value = DbContext.Countries.Where(c => c.Id == CountryDTO.country_id).FirstOrDefault();
+            var value = DbContext.Countries.Where(c => c.Id == CountryDTO.id).FirstOrDefault();
             if (value != null)
             {
                 value.Name = CountryDTO.Name;

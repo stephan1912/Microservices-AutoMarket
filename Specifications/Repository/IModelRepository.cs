@@ -7,8 +7,8 @@ namespace SpecificationsAPI.Repository
 {
     public interface IModelRepository
     {
-        Task<bool> CreateModel(ModelDTO ModelDTO);
-        Task<bool> UpdateModel(ModelDTO ModelDTO);
+        Task<bool> CreateModel(Model ModelDTO);
+        Task<bool> UpdateModel(Model ModelDTO);
         Task<bool> DeleteModel(string id);
         Task<Model> GetById(string id);
         Task<IQueryable<Model>> GetAllAsync();

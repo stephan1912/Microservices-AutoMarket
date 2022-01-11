@@ -1,7 +1,7 @@
 import { ModelObject } from "./modelObject";
 
 export class BrandModel{
-    public brand_id: number;
+    public id: number;
     public name: string;
     public code: string;
     public models: ModelObject[] = [];
