@@ -49,7 +49,7 @@ namespace AdvertAPI
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            DalLibraryStartup.Configure(app);
 
             app.UseEndpoints(endpoints =>
             {

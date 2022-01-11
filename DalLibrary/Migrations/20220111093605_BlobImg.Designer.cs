@@ -3,14 +3,16 @@ using System;
 using DalLibrary.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DalLibrary.Migrations
 {
     [DbContext(typeof(AutoMarketContext))]
-    partial class AutoMarketContextModelSnapshot : ModelSnapshot
+    [Migration("20220111093605_BlobImg")]
+    partial class BlobImg
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -125,8 +127,6 @@ namespace DalLibrary.Migrations
                     b.Property<string>("FeatureId")
                         .HasColumnType("varchar(255)")
                         .HasColumnName("feature_id");
-
-                    b.HasKey("AdvertId", "FeatureId");
 
                     b.HasIndex(new[] { "FeatureId" }, "FK9syg4onaa4l5ms94chv3efy4s");
 

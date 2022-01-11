@@ -51,7 +51,7 @@ export class ModelCreateComponent implements OnInit {
             this.customService.start();
             this.modelService.updateModel(<any>{
                 brandid: this.brandService.selectedBrand.id,
-                id: this.modelService.selectedModel.model_id,
+                id: this.modelService.selectedModel.id,
                 name: this.f.name.value,
                 generation: this.f.generation.value,
                 launchYear: this.f.launchYear.value,

@@ -3,8 +3,10 @@ using AdvertAPI.Repository;
 using DalLibrary.DTO;
 using DalLibrary.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -21,11 +23,13 @@ namespace AdvertAPI.Controllers
         private readonly ILogger<AdvertController> _logger;
 
         public IAdvertRepository AdvertRepository  { get; }
+        public AutoMarketContext AutoMarketContext { get; }
 
-        public AdvertController(ILogger<AdvertController> logger, IAdvertRepository advertRepository)
+        public AdvertController(ILogger<AdvertController> logger, IAdvertRepository advertRepository, AutoMarketContext autoMarketContext)
         {
             _logger = logger;
             AdvertRepository = advertRepository;
+            AutoMarketContext = autoMarketContext;
         }
 
         [HttpGet("all")]
@@ -34,12 +38,14 @@ namespace AdvertAPI.Controllers
             return Ok(await AdvertRepository.GetAllAdverts());
         }
 
-        [HttpGet("/all/{userId}")]
+        [HttpGet("all/{userId}")]
         [Authorize(Roles = "ADMIN")]
         public async Task<IActionResult> GetAll(string userId)
         {
             return Ok(await AdvertRepository.GetAllAsync(userId));
         }
+
+
         [HttpGet("{id}")]
         [Authorize(Roles = "ADMIN")]
         public async Task<IActionResult> GetById(string id)
@@ -47,18 +53,18 @@ namespace AdvertAPI.Controllers
             return Ok(await AdvertRepository.GetByIdAsync(id));
         }
 
-        [HttpGet("/admin/all")]
+        [HttpGet("admin/all")]
         [Authorize(Roles = "ADMIN")]
         public async Task<IActionResult> GetAll()
         {
             return Ok(await AdvertRepository.GetAllAdverts());
         }
 
-        [HttpGet("/all/me")]
+        [HttpGet("all/me")]
         [Authorize(Roles = "USER")]
-        public async Task<IActionResult> GetAllUserAdverts(CustomUserDetails userDetails)
+        public async Task<IActionResult> GetAllUserAdverts()
         {
-            return Ok(await AdvertRepository.GetAllUserAdvertsAsync(userDetails));
+            return Ok(await AdvertRepository.GetAllAsync(User.Claims.FirstOrDefault(c => c.Type == "UserID")?.Value));
         }
 
         [HttpDelete("{id}")]
@@ -77,19 +83,50 @@ namespace AdvertAPI.Controllers
         {
             try
             {
-                var image = System.IO.File.OpenRead("C:\\Users\\Ionut Valentin\\Desktop\\" + filePath);
-                return File(image, "image/jpeg");
+                var img = AutoMarketContext.Images.FirstOrDefault(i => i.Id == filePath);
+
+                Stream fs = new MemoryStream(img.ImageData);
+
+                return File(fs, "image/jpeg");
             }
             catch (FileNotFoundException)
             {
                 return BadRequest();
             }
         }
-        [HttpPost]
-        [Authorize(Roles = "USER")]
-        public async Task<IActionResult> CreateAdvert(AdvertDTO advert)
+        public class AdvertRequest
         {
-            return Ok(await AdvertRepository.CreateAdvert(advert));
+            public List<IFormFile> files { get; set; }
+            public string JsonObject { get; set; }
+        }
+
+        [HttpPost]
+        //[Authorize(Roles = "USER")]
+        public async Task<IActionResult> CreateAdvert([FromForm] AdvertRequest advertReq)
+        {
+            try
+            {
+                var advert = JsonConvert.DeserializeObject<CreateAdvertRequest>(advertReq.JsonObject);
+                advert.pictures = new List<AdvertImage>();
+                foreach (var file in advertReq.files)
+                {
+                    using (var ms = new MemoryStream())
+                    {
+                        file.CopyTo(ms);
+                        var fileBytes = ms.ToArray();
+                        advert.pictures.Add(new AdvertImage
+                        {
+                            imagedata = fileBytes
+                        });
+                    }
+                }
+                advert.user_id = User.Claims.FirstOrDefault(c => c.Type == "UserID")?.Value;
+                return Ok(await AdvertRepository.CreateAdvert(advert));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
+            }
         }
 
         [HttpPut]

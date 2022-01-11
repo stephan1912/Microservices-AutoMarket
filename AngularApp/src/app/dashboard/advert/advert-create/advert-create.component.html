@@ -98,7 +98,7 @@
             <label for="modelSelect">Model:</label>
             <select class="form-control"  formControlName="modelSelect" id="modelSelect" (change)="modelChanged($event.target.value)">
                 <option value="-1" selected disabled>Alege un model</option>
-                <option *ngFor="let p of modelListToShow" value="{{p.model_id}}">{{p.name + ' ' + p.generation}}</option>
+                <option *ngFor="let p of modelListToShow" value="{{p.id}}">{{p.name + ' ' + p.generation}}</option>
             </select>
             <div *ngIf="f.modelSelect.dirty || f.modelSelect.touched">
                 <small class="text-danger" *ngIf="selectedModel == -1">Modelul este obligatoriu</small>

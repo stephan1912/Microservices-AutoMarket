@@ -1,5 +1,5 @@
 export class ModelObject {
-    public model_id: number;
+    public id: number;
     public name: string;
     public generation: string;
     public launchYear: string;

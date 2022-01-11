@@ -83,7 +83,7 @@ export class UserService {
     }
 
     public CreateUser(user: UserModel): Observable<LoginResponse>{
-        return this.http.post<LoginResponse>(this.appSettings.baseApiUrl + "user", user).pipe(map(user => {
+        return this.http.post<LoginResponse>(this.appSettings.baseApiUrl + "user/create", user).pipe(map(user => {
             this.currentUserSubject.next(user);
             this.SaveUserData(user);
             return user;

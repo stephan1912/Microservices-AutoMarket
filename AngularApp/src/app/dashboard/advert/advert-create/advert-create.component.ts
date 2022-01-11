@@ -51,11 +51,11 @@ export class AdvertCreateComponent implements OnInit {
                         this.reinitForms();
 
                         if (this.advertService.SavedAdvert != null) {
-                            let cBrand = brands.find(b => b.models.find(m => m.model_id == this.advertService.SavedAdvert.model.model_id) != undefined);
+                            let cBrand = brands.find(b => b.models.find(m => m.id == this.advertService.SavedAdvert.model.id) != undefined);
                             this.modelListToShow = cBrand.models;
                             this.changeDetector.detectChanges();
                             (document.getElementById('brandSelect') as any).value = this.selectedBrand =  cBrand.id; 
-                            (document.getElementById('modelSelect') as any).value = this.selectedModel = this.advertService.SavedAdvert.model.model_id;
+                            (document.getElementById('modelSelect') as any).value = this.selectedModel = this.advertService.SavedAdvert.model.id;
                             (document.getElementById('bsSelect') as any).value = this.selectedBs = this.advertService.SavedAdvert.bodyStyleDTO.id;
 
                             (document.getElementById('gearboxType') as any).value = this.selectedGearbox = this.advertService.SavedAdvert.gearboxType;

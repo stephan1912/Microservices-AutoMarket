@@ -110,7 +110,6 @@ namespace DalLibrary.Models
 
             modelBuilder.Entity<AdvertFeature>(entity =>
             {
-                entity.HasNoKey();
 
                 entity.ToTable("advert_features");
 
@@ -121,6 +120,7 @@ namespace DalLibrary.Models
                 entity.Property(e => e.AdvertId).HasColumnName("advert_id");
 
                 entity.Property(e => e.FeatureId).HasColumnName("feature_id");
+                entity.HasKey(a => new { a.AdvertId, a.FeatureId });
             });
 
             modelBuilder.Entity<BodyStyle>(entity =>
@@ -210,10 +210,10 @@ namespace DalLibrary.Models
 
                 entity.Property(e => e.AdvertId).HasColumnName("advert_id");
 
-                entity.Property(e => e.Name)
+                entity.Property(e => e.ImageData)
                     .IsRequired()
-                    .HasMaxLength(150)
-                    .HasColumnName("name");
+                    .HasColumnType("MediumBlob")
+                    .HasColumnName("imagedata");
             });
 
             modelBuilder.Entity<Model>(entity =>

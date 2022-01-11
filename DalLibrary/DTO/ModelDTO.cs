@@ -6,7 +6,7 @@ namespace DalLibrary.DTO
 {
     public class ModelDTO
     {
-        public string model_id { get; set; }
+        public string id { get; set; }
         public string name { get; set; }
         public string generation { get; set; }
         public int launchYear { get; set; }

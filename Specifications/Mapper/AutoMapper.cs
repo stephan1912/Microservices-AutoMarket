@@ -13,8 +13,8 @@ namespace AdvertAPI.Mapper
             CreateMap<BodyStyleDTO, BodyStyle>();
             CreateMap<Brand, BrandDTO>().ForMember(a => a.id, b => b.MapFrom(src => src.Id));
             CreateMap<BrandDTO, Brand>().ForMember(a => a.Id, b => b.MapFrom(src=>src.id));
-            CreateMap<Model, ModelDTO>().ForMember(a => a.model_id, b => b.MapFrom(src => src.Id));
-            CreateMap<ModelDTO, Model>().ForMember(a => a.Id, b => b.MapFrom(src => src.model_id));
+            CreateMap<Model, ModelDTO>().ForMember(a => a.id, b => b.MapFrom(src => src.Id));
+            CreateMap<ModelDTO, Model>().ForMember(a => a.Id, b => b.MapFrom(src => src.id));
             CreateMap<Country, CountryDTO>();
             CreateMap<CountryDTO, Country>();
             CreateMap<Feature, FeatureDTO>();

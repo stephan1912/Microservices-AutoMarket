@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using DalLibrary.DTO;
 using DalLibrary.Models;
+using SpecificationsAPI.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -47,9 +49,26 @@ namespace SpecificationsAPI.Repository
             }
         }
 
-        public async Task<IQueryable<Brand>> GetAllAsync()
+        public async Task<IEnumerable<BrandResponse>> GetAllAsync()
         {
-            return await Task.FromResult(DbContext.Brands.AsQueryable());
+            var result = DbContext.Brands.Select(b => new BrandResponse
+            {
+                id = b.Id,
+                code = b.Code,
+                name = b.Name,
+            }).ToList();
+            for(int i = 0; i < result.Count; i++)
+            {
+                result[i].models = (await getAllModels(result[i].id)).Select(m => new ModelDTO
+                {
+                    finalYear = m.FinalYear,
+                    generation = m.Generation,
+                    launchYear = m.LaunchYear,
+                    id = m.Id,
+                    name = m.Name
+                }).ToList();
+            }
+            return await Task.FromResult(result);
         }
 
         public async Task<Brand> GetById(string id)

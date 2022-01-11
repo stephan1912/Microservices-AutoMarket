@@ -40,6 +40,7 @@ namespace IdentityService.Controllers
 
 
         [HttpPost]
+        [Route("create")]
         public async Task<ActionResult> Create([FromBody] UserDTO model)
         {
             model.roles = "USER";
