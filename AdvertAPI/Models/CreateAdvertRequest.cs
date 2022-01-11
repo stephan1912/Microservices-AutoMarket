@@ -9,9 +9,10 @@ namespace AdvertAPI.Models
     public class CreateAdvertRequest
     {
         public string advert_id { get; set; }
-        public string contry_id { get; set; }
+        public string country_id { get; set; }
         public string bodyStyle_id { get; set; }
         public string user_id { get; set; }
+        public string model_id { get; set; }
         public List<string> features { get; set; }
 
         public string title { get; set; }

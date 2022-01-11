@@ -22,7 +22,7 @@ namespace IdentityService.Repository
             return await Task.FromResult(DbContext.Users.Where(a => a.Id == id).FirstOrDefault());
         }
 
-        public Task<bool> UpdateUser(UserDTO userDTO)
+        public Task<User> UpdateUser(UserDTO userDTO)
         {
             var value = DbContext.Users.Where(c => c.Id == userDTO.id).FirstOrDefault();
             if (value != null)
@@ -33,11 +33,11 @@ namespace IdentityService.Repository
                 value.Email = string.IsNullOrEmpty(userDTO?.email) ? value.Email : userDTO.email;
                 value.Birthdate = userDTO.birthdate == null ? value.Birthdate : userDTO.birthdate;
                 DbContext.SaveChanges();
-                return Task.FromResult(true);
+                return Task.FromResult(value);
             }
             else
             {
-                return Task.FromResult(true);
+                return Task.FromResult(new User());
             }
         }
     }

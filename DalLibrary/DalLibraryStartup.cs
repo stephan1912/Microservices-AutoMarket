@@ -21,7 +21,8 @@ namespace DalLibrary
 
             services.AddIdentity<User, IdentityRole>()
                 .AddRoles<IdentityRole>()
-                .AddEntityFrameworkStores<AutoMarketContext>();
+                .AddEntityFrameworkStores<AutoMarketContext>()
+                .AddDefaultTokenProviders();
 
             services.Configure<IdentityOptions>(options =>
             {

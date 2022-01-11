@@ -9,7 +9,7 @@ namespace IdentityService.Repository
 {
     public interface IUserRepository
     {
-        Task<bool> UpdateUser(UserDTO BrandDTO);
+        Task<User> UpdateUser(UserDTO BrandDTO);
         Task<User> GetById(string id);
     }
 }

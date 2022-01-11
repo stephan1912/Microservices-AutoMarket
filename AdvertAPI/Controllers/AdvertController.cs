@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace AdvertAPI.Controllers
@@ -33,9 +34,13 @@ namespace AdvertAPI.Controllers
         }
 
         [HttpGet("all")]
-        public async Task<IActionResult> GetAllAdverts()
+        public async Task<IActionResult> GetAllAdverts([FromQuery] string filter, [FromQuery] int page)
         {
-            return Ok(await AdvertRepository.GetAllAdverts());
+            AdvertFilter advFitler = null;
+            if (!string.IsNullOrEmpty(filter)) { 
+                advFitler = JsonConvert.DeserializeObject<AdvertFilter>(Encoding.UTF8.GetString(Convert.FromBase64String(filter)));
+            }
+            return Ok(await AdvertRepository.GetAllAdverts(advFitler, page));
         }
 
         [HttpGet("all/{userId}")]
@@ -57,7 +62,7 @@ namespace AdvertAPI.Controllers
         [Authorize(Roles = "ADMIN")]
         public async Task<IActionResult> GetAll()
         {
-            return Ok(await AdvertRepository.GetAllAdverts());
+            return Ok(await AdvertRepository.GetAllAdverts(null, 0));
         }
 
         [HttpGet("all/me")]
@@ -131,8 +136,9 @@ namespace AdvertAPI.Controllers
 
         [HttpPut]
         [Authorize(Roles = "USER")]
-        public async Task<IActionResult> UpdateAdvert(AdvertDTO advert)
+        public async Task<IActionResult> UpdateAdvert([FromBody] CreateAdvertRequest advert)
         {
+            advert.user_id = User.Claims.FirstOrDefault(c => c.Type == "UserID")?.Value;
             return Ok(await AdvertRepository.UpdateAdvert(advert));
         }
     }

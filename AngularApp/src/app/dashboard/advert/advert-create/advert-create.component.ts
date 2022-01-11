@@ -175,6 +175,7 @@ export class AdvertCreateComponent implements OnInit {
                 bodyStyle_id: this.selectedBs,
                 gearboxType: this.selectedGearbox,
                 drivetrain: this.selectedDrivetrain,
+                country_id: this.selectedCountry,
                 fuel: this.selectedFuel,
                 features: this.addedFeatures.map(f => f.id),
                 title: this.f.title.value,

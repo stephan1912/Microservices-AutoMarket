@@ -106,6 +106,21 @@ namespace IdentityService.Controllers
             });
         }
 
+        [HttpPost]
+        [Route("logout")]
+        public async Task<ActionResult> Logout()
+        {
+            try
+            {
+                await UserManager.UpdateSecurityStampAsync(await UserManager.GetUserAsync(User));
+                return Ok();
+            }
+            catch
+            {
+                return Ok();
+            }
+        }
+
 
         [HttpPost]
         [Route("session")]
@@ -163,12 +178,64 @@ namespace IdentityService.Controllers
         }
 
         [HttpPut]
-        [Route("edit")]
+        [Route("me")]
         [Authorize(Roles = "USER")]
         public async Task<ActionResult> Edit([FromBody] UserDTO model)
         {
             model.id = User.Claims.FirstOrDefault(c => c.Type == "UserID")?.Value;
-            return Ok(await UserRepository.UpdateUser(model));
+            var response = await UserRepository.UpdateUser(model);
+            if (string.IsNullOrEmpty(response.Email)) return BadRequest();
+            return Ok(new AuthResponse
+            {
+                username = response.UserName,
+                jwt = await GenerateJwtToken(response.Email, response, false),
+                email = response.Email
+            });
         }
+
+        public class PasswordRequest
+        {
+            public string currentPassword { get; set; }
+            public string newPassword { get; set; }
+        }
+
+        [HttpPut]
+        [Route("me/password")]
+        [Authorize(Roles = "USER")]
+        public async Task<ActionResult> EditPassword([FromBody] PasswordRequest model)
+        {
+            try
+            {
+                var userId = User.Claims.FirstOrDefault(c => c.Type == "UserID")?.Value;
+
+                var user = await UserManager.FindByIdAsync(userId);
+                var loginResult = await SignInManager.PasswordSignInAsync(user.UserName, model.currentPassword, false, false);
+                if (!loginResult.Succeeded)
+                {
+                    return ServiceResponseModel<object>.bad(ErrorResponse.InvalidCredentials()).toHttpResponse();
+                }
+                var token = await UserManager.GeneratePasswordResetTokenAsync(user);
+
+                var result = await UserManager.ResetPasswordAsync(user, token, model.newPassword);
+
+                loginResult = await SignInManager.PasswordSignInAsync(user.UserName, model.newPassword, false, false);
+                if (!loginResult.Succeeded)
+                {
+                    return ServiceResponseModel<object>.bad(ErrorResponse.InvalidCredentials()).toHttpResponse();
+                }
+                return Ok(new AuthResponse
+                {
+                    username = user.UserName,
+                    jwt = await GenerateJwtToken(user.Email, user, false),
+                    email = user.Email
+                });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
+            }
+        }
+
+
     }
 }
