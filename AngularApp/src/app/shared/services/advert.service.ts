@@ -35,13 +35,20 @@ export class AdvertService {
         return this.http.delete<any>(this.appSettings.baseApiUrl + 'advert/' + advert_id);
     }
 
-    public GetAllAdvertsFiltered(filter: any, page: number = 1): Observable<AdvertModel[]>{
+    public GetAllAdvertsFiltered(filter: any, page: number = 1, userPrevious: boolean = false): Observable<AdvertModel[]>{
+        if(userPrevious){
+            if(this.currentFilter != null && filter == null){
+                filter = this.currentFilter;
+            }
+            else{
+                this.currentFilter = filter;
+            }
+        }
         let filterUrl = '?filter=' + btoa(JSON.stringify(filter)) + '&page=' + page;
         if(filter == null){
             filterUrl = '?page=' + page;
             //return this.http.get<any>(this.appSettings.baseApiUrl + 'advert/all');
         }
-        this.currentFilter = filter;
         return this.http.get<any>(this.appSettings.baseApiUrl + 'advert/all' + filterUrl).pipe(map(ads => {
             this.advertList = ads.adverts;
             this.totalCount = ads.totalCount;

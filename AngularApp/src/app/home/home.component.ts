@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit{
 
     setPage(page){
         this.customService.start();
-        this.advertService.GetAllAdvertsFiltered(null, page).subscribe(_ => {
+        this.advertService.GetAllAdvertsFiltered(null, page, true).subscribe(_ => {
             this.customService.stop();
         });
     }

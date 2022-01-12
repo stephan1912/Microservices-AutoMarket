@@ -59,6 +59,7 @@ export class AdvertFilterComponent implements OnInit {
 
         });
         this.initDone = true;
+        this.advertService.currentFilter = null;
         this.customService.stop();
     }
 
@@ -77,7 +78,7 @@ export class AdvertFilterComponent implements OnInit {
             horsePowerMax: this.filterForm.controls.horsePowerMax.value == '' ? -1 : this.filterForm.controls.horsePowerMax.value,
             priceMin: this.filterForm.controls.priceMin.value == '' ? -1 : this.filterForm.controls.priceMin.value,
             priceMax: this.filterForm.controls.priceMax.value == '' ? -1 : this.filterForm.controls.priceMax.value,
-        }).subscribe(_ => {
+        }, 1, true).subscribe(_ => {
             this.customService.stop();
         }, this.customService.errorFromResp); 
     }
